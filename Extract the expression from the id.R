@@ -1,0 +1,8 @@
+a=data.table::fread('ALL_meta_averagedata.txt')
+b=data.table::fread('metalist')
+c=dplyr::inner_join(a,b,by=c('ID'='Index'))
+write.table(c,'metalist_expr',sep="\t",row.names = F,quote=F)
+a=data.table::fread('ALL_gene_average.txt')
+b=data.table::fread('mRNAlist')
+c=dplyr::inner_join(a,b,by=c('Transcript_id'='rowname'))
+write.table(c,'mRNAlist_expr',sep="\t",row.names = F,quote=F)
